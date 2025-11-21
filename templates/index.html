@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Q&A System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .processed-q {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed #ced4da;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🧠 LLM Question-Answering System</h1>
+        
+        <form method="POST" action="/">
+            <label for="question">Enter your question for the LLM:</label>
+            <textarea id="question" name="question" rows="5" required>{{ user_question }}</textarea>
+            
+            <button type="submit">Get LLM Answer</button>
+        </form>
+
+        {% if answer %}
+        <div class="result-box">
+            <h2>✅ Results</h2>
+            
+            <p><strong>Original Question:</strong></p>
+            <p>{{ original_question }}</p>
+
+            <p><strong>Processed Question:</strong></p>
+            <div class="processed-q">{{ processed_question }}</div>
+            
+            <p><strong>LLM API Response:</strong></p>
+            <p style="white-space: pre-wrap; font-weight: bold; color: #007bff;">{{ answer }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
